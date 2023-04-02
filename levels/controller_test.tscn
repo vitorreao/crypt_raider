@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl66a70fgy231"]
+[gd_scene load_steps=9 format=3 uid="uid://cl66a70fgy231"]
 
 [ext_resource type="Texture2D" uid="uid://bhmeocu52jcmy" path="res://levels/test_ground_texture.png" id="1_swwbl"]
 [ext_resource type="PackedScene" uid="uid://dgdfsjb8uv61v" path="res://controller/player.tscn" id="2_kmocb"]
+[ext_resource type="PackedScene" uid="uid://niux5yodwx27" path="res://enemy/enemy.tscn" id="3_cuek1"]
+[ext_resource type="PackedScene" uid="uid://wcr1vkivbmk" path="res://props/test/box.tscn" id="4_actj2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hxbr"]
 albedo_texture = ExtResource("1_swwbl")
@@ -41,3 +43,25 @@ environment = SubResource("Environment_m4yod")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.7359, 0)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_cuek1")]
+transform = Transform3D(-0.859522, 0, -0.511098, 0, 1, 0, 0.511098, 0, -0.859522, 0, 0, -12.4089)
+player = NodePath("../Player")
+
+[node name="Box" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.36069)
+
+[node name="Box4" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2.361)
+
+[node name="Box5" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2.361)
+
+[node name="Box6" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -2.361)
+
+[node name="Box2" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.361)
+
+[node name="Box3" parent="." instance=ExtResource("4_actj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.361)

@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://niux5yodwx27"]
+[gd_scene load_steps=6 format=3 uid="uid://niux5yodwx27"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ov1o5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xirtf"]
 
@@ -13,6 +15,7 @@ material = SubResource("StandardMaterial3D_ryjb0")
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_ov1o5")
 
 [node name="PhysicalCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -25,3 +28,9 @@ mesh = SubResource("CapsuleMesh_ptjeq")
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.521094, 0, 0, 0, 0.0651419, 0, 0, 0, 0.817807, 0, 1.46571, -0.0997109)
 mesh = SubResource("BoxMesh_wnubd")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46834, -0.532374)
+target_position = Vector3(0, 0, 0)
+collision_mask = 5
+collide_with_areas = true
