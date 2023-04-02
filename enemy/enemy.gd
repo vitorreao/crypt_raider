@@ -17,16 +17,14 @@ func _process(delta):
 	
 func _check_player_visibility():
 	if _enemy_to_player.length() < maximum_distance_to_detect:
-		var u = _enemy_to_player.normalized() * -1
-		var v = global_transform.basis.z
-		var cos = u.dot(v) / (u.length() * v.length())
-		var angle = acos(cos)
-		if angle < field_of_view:
+		var angle = VectorUtils.angle_in_rads(_enemy_to_player.normalized() * -1, global_transform.basis.z)
+		if angle < deg_to_rad(field_of_view):
 			_ray_cast.target_position = to_local(player.global_position)
 
 func _physics_process(delta):
-	_ray_cast.force_raycast_update()
 	if _ray_cast.is_colliding() and _ray_cast.get_collider() == player:
-		print("TARGET LOCKED")
+		#print("TARGET LOCKED")
+		pass
 	else:
-		print("TARGET NOT LOCKED")
+		#print("TARGET NOT LOCKED")
+		pass
