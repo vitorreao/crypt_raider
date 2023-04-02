@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgdfsjb8uv61v"]
+
+[ext_resource type="Script" path="res://controller/player.gd" id="1_t7l0n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7g61"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d8ho"]
+albedo_color = Color(0.211765, 0.317647, 0.686275, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqrx5"]
+material = SubResource("StandardMaterial3D_1d8ho")
+
+[sub_resource type="BoxMesh" id="BoxMesh_k4v7d"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_t7l0n")
+
+[node name="PhysicalCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_u7g61")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_kqrx5")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.543572, 0, 0, 0, 0.117753, 0, 0, 0, 0.896404, 0, 1.43823, -0.0547634)
+mesh = SubResource("BoxMesh_k4v7d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4803, -0.419064)

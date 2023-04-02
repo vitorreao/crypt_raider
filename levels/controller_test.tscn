@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl66a70fgy231"]
+
+[ext_resource type="Texture2D" uid="uid://bhmeocu52jcmy" path="res://levels/test_ground_texture.png" id="1_swwbl"]
+[ext_resource type="PackedScene" uid="uid://dgdfsjb8uv61v" path="res://controller/player.tscn" id="2_kmocb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hxbr"]
+albedo_texture = ExtResource("1_swwbl")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64msa"]
+material = SubResource("StandardMaterial3D_5hxbr")
+size = Vector2(1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnwq2"]
+size = Vector3(1000, 0.0153477, 1000)
+
+[sub_resource type="Environment" id="Environment_m4yod"]
+ambient_light_color = Color(0.796078, 0.796078, 0.796078, 1)
+reflected_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0.145098, 0.164706, 0.188235, 1)
+fog_light_energy = 5.0
+
+[node name="ControllerTest" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_64msa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00722505, 0)
+shape = SubResource("BoxShape3D_rnwq2")
+
+[node name="Player" parent="." instance=ExtResource("2_kmocb")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m4yod")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12.7359, 0)

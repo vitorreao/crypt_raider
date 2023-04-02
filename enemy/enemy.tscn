@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://niux5yodwx27"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xirtf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryjb0"]
+albedo_color = Color(0.745098, 0.219608, 0.243137, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ptjeq"]
+material = SubResource("StandardMaterial3D_ryjb0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_wnubd"]
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="PhysicalCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xirtf")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ptjeq")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.521094, 0, 0, 0, 0.0651419, 0, 0, 0, 0.817807, 0, 1.46571, -0.0997109)
+mesh = SubResource("BoxMesh_wnubd")
