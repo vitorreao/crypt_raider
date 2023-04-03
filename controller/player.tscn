@@ -27,6 +27,3 @@ mesh = SubResource("CapsuleMesh_kqrx5")
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.543572, 0, 0, 0, 0.117753, 0, 0, 0, 0.896404, 0, 1.43823, -0.0547634)
 mesh = SubResource("BoxMesh_k4v7d")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4803, -0.419064)

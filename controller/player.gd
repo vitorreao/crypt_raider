@@ -1,20 +1,18 @@
 extends CharacterBody3D
 
 @export var turn_speed: float = 2.0
-@export var forward_speed: float = 4.0
-@export var backward_speed: float = 2.0
+@export var move_speed: float = 3.0
 
-var _turn_input_strength: float
-var _move_input_strength: float
+var _input_dir: Vector2
 
 func _process(delta):
-	_turn_input_strength = Input.get_axis("look_right", "look_left")
-	_move_input_strength = Input.get_axis("move_forwards", "move_backwards")
+	var x_axis = Input.get_axis("look_right", "look_left")
+	var y_axis = Input.get_axis("move_backwards", "move_forwards")
+	_input_dir = Vector2(x_axis, y_axis).normalized() * -1
 
 func _physics_process(delta):
-	rotate_y(_turn_input_strength * turn_speed * delta)
-	if _move_input_strength < 0:
-		velocity = global_transform.basis.z * _move_input_strength * forward_speed
-	else:
-		velocity = global_transform.basis.z * _move_input_strength * backward_speed
+	var speed = move_speed * _input_dir.length()
+	if _input_dir != Vector2.ZERO:
+		rotation.y = atan2(_input_dir.x, _input_dir.y)
+	velocity = global_transform.basis.z * speed * -1
 	move_and_slide()

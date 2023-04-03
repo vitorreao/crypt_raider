@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl66a70fgy231"]
+[gd_scene load_steps=10 format=3 uid="uid://cl66a70fgy231"]
 
 [ext_resource type="Texture2D" uid="uid://bhmeocu52jcmy" path="res://levels/test_ground_texture.png" id="1_swwbl"]
 [ext_resource type="PackedScene" uid="uid://dgdfsjb8uv61v" path="res://controller/player.tscn" id="2_kmocb"]
 [ext_resource type="PackedScene" uid="uid://niux5yodwx27" path="res://enemy/enemy.tscn" id="3_cuek1"]
 [ext_resource type="PackedScene" uid="uid://wcr1vkivbmk" path="res://props/test/box.tscn" id="4_actj2"]
+[ext_resource type="Script" path="res://controller/camera.gd" id="5_w4vcb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hxbr"]
 albedo_texture = ExtResource("1_swwbl")
@@ -65,3 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.361)
 
 [node name="Box3" parent="." instance=ExtResource("4_actj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2.361)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("5_w4vcb")
+target = NodePath("../Player")
